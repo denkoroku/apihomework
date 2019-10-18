@@ -1,9 +1,9 @@
 <template lang="html">
   <GChart
-    v-if="chartData"
-    type="ColumnChart"
-    :data="chartData"
-    :options="chartOptions"
+  v-if="chartData"
+  type="ColumnChart"
+  :data="chartData"
+  :options="chartOptions"
   />
 </template>
 
@@ -21,21 +21,24 @@ export default {
     }
   },
   props: ['cryptoData'],
-  components : {
+  components: {
     GChart
   },
   computed: {
+
+
     chartData: function(){
-      if(this.chartData){
+      if(this.cryptoData){
         const chartData = this.cryptoData.map((currencyObject)=>{
           return [currencyObject.name, currencyObject.current_price]
-        }
+        })
         return chartData
       }
       return null
     }
   }
 }
+
 </script>
 
 <style lang="css" scoped>
