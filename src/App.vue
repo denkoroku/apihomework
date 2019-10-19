@@ -9,12 +9,10 @@
 </template>
 
 <script>
-
 import CryptoSelector from './components/CryptoSelector.vue';
 import CryptoChart from './components/CryptoChart.vue';
 import CryptoDetails from './components/CryptoDetails.vue';
 import { eventBus } from '@/main.js';
-
 export default {
   name: 'app',
   components: {
@@ -34,7 +32,6 @@ export default {
     .then(json => {
       this.cryptoData = json
     });
-
     eventBus.$on('currency-selected', (currency) => {
       this.selectedCurrency = currency
     });

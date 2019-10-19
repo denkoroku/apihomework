@@ -23,11 +23,11 @@ export default {
       selectedCurrencyCode:this.selectedCurrencyCode
     }
   },
-
   methods: {
     handleSelectCurrency() {
       eventBus.$emit('currency-selected', this.selectedCurrencyCode);
     }
+    
   }
 }
 </script>

@@ -14,7 +14,8 @@
 <script>
 export default {
   name: 'crypto-details',
-  props: ['cryptoData', 'currency']
+  props: ['cryptoData', 'currency'],
+  
 }
 </script>
 
