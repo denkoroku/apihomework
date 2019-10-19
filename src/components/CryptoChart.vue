@@ -21,7 +21,11 @@ export default {
   data () {
     return {
       chartOptions: {
+        width: 800,
+        height: 1040,
         chart: {
+
+
           title: 'Crypto Chart',
         }
       }
