@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'currency-details',
+  name: 'crypto-details',
   props: ['cryptoData', 'currency']
 }
 </script>

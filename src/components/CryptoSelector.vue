@@ -17,7 +17,7 @@
 <script>
 import { eventBus } from '@/main.js';
 export default {
-  props:['cryptoData','selectedCurrencyCode'],
+  props:['cryptoData'],
   data(){
     return{
       selectedCurrencyCode:this.selectedCurrencyCode

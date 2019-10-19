@@ -4,7 +4,7 @@
 
     <crypto-chart  :cryptoData="cryptoData"> </crypto-chart>
     <crypto-selector :cryptoData="cryptoData">  {{selectedCurrency}}</crypto-selector>
-    <crypto-details v-if="selectedCurrency" :currency="selectedCurrency">{{currency-details}}</crypto-details>
+    <crypto-details v-if="selectedCurrency" :currency="selectedCurrency"></crypto-details>
   </div>
 </template>
 
