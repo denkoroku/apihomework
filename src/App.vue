@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <h1>Cryptocurrency Tracker</h1>
-    
-    <crypto-chart v-if="cryptoData" :cryptoData="cryptoData"> </crypto-chart>
-    <crypto-selector cryptocurrency="Bitcoin"></crypto-selector>
 
-
+    <crypto-chart  :cryptoData="cryptoData"> </crypto-chart>
+    <crypto-selector :cryptoCurrencies="cryptoCurrencies">  {{selectedCurrency}}</crypto-selector>
   </div>
 </template>
 
@@ -22,25 +20,27 @@ export default {
   },
   data(){
     return {
-      cryptoData: null
-      }
-    },
-    mounted(){
-      fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d")
-      .then(response => response.json())
-      .then(json => this.cryptoData = json)
-      .then (cryptoData => console.log(cryptoData))
-
+      cryptoData: null,
+      cryptoCurrencies:['bitcoin', 'ethereum', 'bananacoin'],
+      selectedCurrency:null
     }
+  },
+  mounted(){
+    fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d")
+    .then(response => response.json())
+    .then(json => this.cryptoData = json)
+    .then (cryptoData => console.log(cryptoData))
 
   }
-  </script>
+}
 
-  <style>
+</script>
+
+<style>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
   }
-  </style>
+</style>
