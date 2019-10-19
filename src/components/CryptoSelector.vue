@@ -1,38 +1,36 @@
 <template lang="html">
   <div class="row">
-      <div class="">
-          <label for="currencySelect">currency</label>
-          <select
-                  id="currency"
-                  class="form-control"
-                  v-model="selectedCurrency">
-              <option v-for="currency in cryptoData">{{currency.name}}</option>
-          </select>
-      </div>
+    <div class="">
+      <label for="currencySelect">currency</label>
+      <select
+      v-on:change="handleSelectCurrency"
+      id="currency"
+      class="form-control"
+      v-model="selectedCurrencyCode">
+      <option v-for="(currency, index) in cryptoData"
+      :key="index":value="currency.symbol">{{currency.name}}</option>
+    </select>
   </div>
+</div>
 </template>
 
 <script>
+import { eventBus } from '@/main.js';
 export default {
-  props:['cryptoData'],
+  props:['cryptoData','selectedCurrencyCode'],
   data(){
     return{
-      selectedCurrency:""
+      selectedCurrencyCode:this.selectedCurrencyCode
     }
   },
 
-
+  methods: {
+    handleSelectCurrency() {
+      eventBus.$emit('currency-selected', this.selectedCurrencyCode);
+    }
+  }
 }
 </script>
 
 <style lang="css" scoped>
 </style>
-
-<!-- if(this.cryptoData){
-  const preparedData = this.cryptoData.slice(0,10);
-  const chartData = this.preparedData.map((currencyObject)=>{
-    return [currencyObject.name, currencyObject.current_price]
-  })
-  chartData = this.chartData
-}
-return null -->

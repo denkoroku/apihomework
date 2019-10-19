@@ -22,7 +22,7 @@ export default {
     return {
       chartOptions: {
         width: 800,
-        height: 1040,
+        height: 500,
         chart: {
 
 
@@ -36,7 +36,7 @@ export default {
       if (!this.cryptoData) return;
       const smallData = this.cryptoData.slice(0,10)
       const chartData = smallData.map((item) => {
-        return [item.name, item.current_price]
+        return [item.name, item.price_change_percentage_24h]
       })
       chartData.unshift(['Name', 'Current Price'])
       return chartData

@@ -4,6 +4,7 @@
 
     <crypto-chart  :cryptoData="cryptoData"> </crypto-chart>
     <crypto-selector :cryptoData="cryptoData">  {{selectedCurrency}}</crypto-selector>
+    <crypto-details v-if="selectedCurrency" :currency="selectedCurrency">{{currency-details}}</crypto-details>
   </div>
 </template>
 
@@ -11,17 +12,19 @@
 
 import CryptoSelector from './components/CryptoSelector.vue';
 import CryptoChart from './components/CryptoChart.vue';
+import CryptoDetails from './components/CryptoDetails.vue';
+import { eventBus } from '@/main.js';
 
 export default {
   name: 'app',
   components: {
     "crypto-selector":CryptoSelector,
-    "crypto-chart":CryptoChart
+    "crypto-chart":CryptoChart,
+    "crypto-details":CryptoDetails,
   },
   data(){
     return {
       cryptoData: null,
-      cryptoCurrencies:['bitcoin', 'ethereum', 'bananacoin'],
       selectedCurrency:null
     }
   },
@@ -30,23 +33,20 @@ export default {
     .then(response => response.json())
     .then(json => {
       this.cryptoData = json
-    })
+    });
 
+    eventBus.$on('currency-selected', (currency) => {
+      this.selectedCurrency = currency
+    });
   }
 }
+  </script>
 
-</script>
-
-<style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-</style>
-
-<!-- old -->
-<!-- .then(response => response.json())
-.then(json => this.cryptoData = json)
-.then (cryptoData => console.log(cryptoData)) -->
+  <style>
+    #app {
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 60px;
+    }
+  </style>
