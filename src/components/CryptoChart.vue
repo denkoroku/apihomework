@@ -1,65 +1,52 @@
 <template lang="html">
-  <div>
+  <div class="">
+    <h2> Chart</h2>
     <GChart
-    v-if="testData"
     type="ColumnChart"
-    :data="testData"
-    :options="chartOptions"
-    />
+    :data='chartData'
+    :options='chartOptions'
+    class="chart"/>
   </div>
-
 </template>
 
 <script>
 import { GChart } from 'vue-google-charts'
+
 export default {
   name: 'crypto-chart',
-  props:['cryptoData'],
-
-  data(){
+  props: ['cryptoData'],
+  components: {
+    GChart
+  },
+  data () {
     return {
-      testData:[['name','current_price'],["bitcoin",500],["ethereum",200],["bananacoin",10]],
-      chartData: null,
       chartOptions: {
-        width: 800,
-        height: 240,
-        title: 'Top 10 cryptocurrencies',
-      },
-
-      components: {
-        GChart
-      },
-      computed: {
-        chartData: function(){
-          if(this.cryptoData){
-            const preparedData = this.cryptoData.slice(0,10);
-            const chartData = this.preparedData.map(data => Object.values(data))
-            chartData[0] = Object.keys(this.preparedData[0])
-            console.log(chartData);
-            return chartData;
-            }
-          return null
+        chart: {
+          title: 'Crypto Chart',
         }
       }
     }
-  }
+  },
+  computed: {
+    chartData: function() {
+      if (!this.cryptoData) return;
+      const smallData = this.cryptoData.slice(0,10)
+      const chartData = smallData.map((item) => {
+        return [item.name, item.current_price]
+      })
+      chartData.unshift(['Name', 'Current Price'])
+      return chartData
+    }
+  },
 }
+
+
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
+
+body {
+  display: flex;
+  justify-content: center;
+}
 </style>
-
-
-
-
-<!-- old -->
-<!-- chartData: function(){
-  if(this.cryptoData){
-    const preparedData = this.cryptoData.slice(0,10);
-    const chartData = this.preparedData.map((currencyObject)=>{
-      return [currencyObject.name, currencyObject.current_price]
-    })
-    chartData = this.chartData
-  }
-  return null
-} -->
