@@ -18,18 +18,23 @@
 import { eventBus } from '@/main.js';
 export default {
   props:['cryptoData'],
+
   data(){
     return{
-      selectedCurrencyCode:this.selectedCurrencyCode
+      selectedCurrencyCode:this.selectedCurrencyCode,
+
     }
   },
   methods: {
     handleSelectCurrency() {
-      eventBus.$emit('currency-selected', this.selectedCurrencyCode);
+        const selectedCurrency = this.cryptoData
+        .find(currency => currency.symbol === this.selectedCurrencyCode);
+        eventBus.$emit('currency-selected', selectedCurrency);
+
+      },
     }
-    
   }
-}
+
 </script>
 
 <style lang="css" scoped>
