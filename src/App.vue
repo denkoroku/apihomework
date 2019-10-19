@@ -3,7 +3,7 @@
     <h1>Cryptocurrency Tracker</h1>
 
     <crypto-chart  :cryptoData="cryptoData"> </crypto-chart>
-    <crypto-selector :cryptoCurrencies="cryptoCurrencies">  {{selectedCurrency}}</crypto-selector>
+    <crypto-selector :cryptoData="cryptoData">  {{selectedCurrency}}</crypto-selector>
   </div>
 </template>
 
@@ -28,8 +28,9 @@ export default {
   mounted(){
     fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d")
     .then(response => response.json())
-    .then(json => this.cryptoData = json)
-    .then (cryptoData => console.log(cryptoData))
+    .then(json => {
+      this.cryptoData = json
+    })
 
   }
 }
@@ -44,3 +45,8 @@ export default {
     margin-top: 60px;
   }
 </style>
+
+<!-- old -->
+<!-- .then(response => response.json())
+.then(json => this.cryptoData = json)
+.then (cryptoData => console.log(cryptoData)) -->
