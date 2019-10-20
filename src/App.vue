@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Cryptocurrency Tracker</h1>
+    <h1>Cryptocurrency Data</h1>
 
     <crypto-chart  :cryptoData="cryptoData"> </crypto-chart>
     <crypto-selector :cryptoData="cryptoData">  {{selectedCurrency}}</crypto-selector>
@@ -41,7 +41,8 @@ export default {
 
   <style>
     #app {
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      font-weight:100;
       text-align: center;
       color: #2c3e50;
       margin-top: 60px;
