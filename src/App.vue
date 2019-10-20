@@ -40,11 +40,13 @@ export default {
   </script>
 
   <style>
+    body{background:linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);}
     #app {
       font-family: 'Poppins', sans-serif;
       font-weight:100;
       text-align: center;
+
       color: #2c3e50;
-      margin-top: 60px;
+      margin-top: 40px;
     }
   </style>

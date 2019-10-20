@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="row">
-    <div class="">
+    <div id="selector">
       <label for="currencySelect">currency</label>
       <select
       v-on:change="handleSelectCurrency"
@@ -38,4 +38,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#selector{
+  padding-top:50px;
+  padding-bottom:50px;
+}
+
 </style>

@@ -32,7 +32,7 @@ export default {
 img{
   display:inline-flex;
   float:left;
-  width:50px;
+  width:100px;
   margin:130px;
 margin-top: -50px;
 

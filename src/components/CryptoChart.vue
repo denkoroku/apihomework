@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <h2> Percent Change over last 24hrs</h2>
+    <h3> Percent Change over last 24hrs</h3>
     <GChart
     type="ColumnChart"
     :data='chartData'
@@ -21,11 +21,10 @@ export default {
   data () {
     return {
       chartOptions: {
-        width: 800,
+        width: 1000,
         height: 500,
+        legend:'none',
         chart: {
-
-
           title: 'Crypto Chart',
         }
       }
