@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <h2> Chart</h2>
+    <h2> Percent Change over last 24hrs</h2>
     <GChart
     type="ColumnChart"
     :data='chartData'
